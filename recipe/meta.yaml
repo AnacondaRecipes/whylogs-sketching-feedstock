@@ -20,6 +20,7 @@ requirements:
     - cmake >=3.16
   host:
     - python
+    - pip
     - wheel
     - setuptools
     - pybind11
@@ -27,7 +28,6 @@ requirements:
     - python
 
 test:
-  imports:
   commands:
     - pip check
   requires:
