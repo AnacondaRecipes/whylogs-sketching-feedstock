@@ -20,6 +20,7 @@ requirements:
     - {{ compiler('cxx') }}
     - {{ compiler('c')}}
     - cmake >=3.16
+    - pybind11
   host:
     - python
     - pip
