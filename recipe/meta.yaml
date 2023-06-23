@@ -18,7 +18,7 @@ requirements:
   build:
     - {{ compiler('cxx') }}
     - {{ compiler('c')}}
-    - cmake >=3.16
+    - cmake >=3.12
   host:
     - python
     - pip
