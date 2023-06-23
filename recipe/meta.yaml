@@ -30,12 +30,15 @@ requirements:
     - python
 
 test:
+  imports:
+    - whylogs_sketching
   commands:
     - pip check
   requires:
     - pip
 
 about:
+  # NOTE: Github repo isn't up to date with pypi releases.
   home: https://github.com/whylabs/whylogs-sketching
   license: Apache-2.0
   license_family: Apache
