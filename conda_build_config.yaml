@@ -1,2 +1,6 @@
 MACOSX_DEPLOYMENT_TARGET:  # [osx and x86_64]
   - '10.15'                # [osx and x86_64]
+cxx_compiler:              # [win]
+  - 'vs2019'               # [win]
+c_compiler:                # [win]
+  - 'vs2019'               # [win]
