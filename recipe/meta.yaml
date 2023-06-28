@@ -13,7 +13,7 @@ source:
 build:
   number: 0
   skip: true  # [py<37 or (win and vc<16)]
-  script: python -m pip install --no-deps --ignore-installed --no-build-isolation .
+  script: {{ python }} -m pip install --no-deps --ignore-installed --no-build-isolation .
 
 requirements:
   build:
