@@ -36,13 +36,13 @@ test:
     - python
     - pytest
     - numpy
-  files:
-    - tests/
+  source_files:
+    - python/tests
   imports:
     - whylogs_sketching
   commands:
     - pip check
-    - pytest -v tests
+    - pytest -v python/tests
 
 about:
   # NOTE: Github repo isn't up to date with pypi releases.
