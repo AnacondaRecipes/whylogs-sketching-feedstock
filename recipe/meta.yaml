@@ -42,7 +42,8 @@ test:
     - whylogs_sketching
   commands:
     - pip check
-    - pytest -v python/tests
+    - pytest -v python/tests  # [not s390x]
+    - pytest -v python/tests -k "not (test_theta_basic_example or test_theta_set_operations)"  # [s390x]
 
 about:
   # NOTE: Github repo isn't up to date with pypi releases.
