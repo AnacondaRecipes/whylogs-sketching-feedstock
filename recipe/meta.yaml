@@ -1,0 +1,60 @@
+{% set version = "3.4.1.dev3" %}
+{% set name = "whylogs-sketching" %}
+{% set sha256 = "40b90eb9d5e4cbbfa63f6a1f3a3332b72258d270044b79030dc5d720fddd9499" %}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: {{ sha256 }}
+
+build:
+  number: 0
+  skip: true  # [py<37 or (win and vc<16)]
+  script: {{ PYTHON }} -m pip install --no-deps --ignore-installed --no-build-isolation . -v
+
+requirements:
+  build:
+    - {{ compiler('cxx') }}
+    - {{ compiler('c')}}
+    - make  # [linux]
+    - cmake >=3.12
+  host:
+    - python
+    - pip
+    - wheel
+    - setuptools
+    - pybind11 2.10.4
+  run:
+    - python
+
+test:
+  requires:
+    - pip
+    - python
+    - pytest
+    - numpy
+  source_files:
+    - python/tests
+  imports:
+    - whylogs_sketching
+  commands:
+    - pip check
+    - pytest -v python/tests  # [not s390x]
+    - pytest -v python/tests -k "not (test_theta_basic_example or test_theta_set_operations)"  # [s390x]
+
+about:
+  # NOTE: Github repo isn't up to date with pypi releases.
+  home: https://github.com/whylabs/whylogs-sketching
+  license: Apache-2.0
+  license_family: Apache
+  license_file: LICENSE
+  summary: WhyLabs's fork of the Apache Datasketches library
+  description: |
+    This is the core C++ component of the Apache DataSketches library.
+    It contains all of the key sketching algorithms that are in the
+    Java component and can be accessed directly from user applications.
+  dev_url: https://github.com/whylabs/whylogs-sketching
+  doc_url: https://datasketches.apache.org/
